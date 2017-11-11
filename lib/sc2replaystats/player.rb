@@ -1,4 +1,8 @@
+##
+# Classes to access api endpoints
 module Sc2replaystats
+  ##
+  # Methods to access player api endpoints
   class Player
     def initialize(client)
       @client = client
@@ -8,10 +12,20 @@ module Sc2replaystats
       client.get '/player'
     end
 
-    def player_info(id)
-      resp = @client.get "/player/#{id}"
-      resp[:ladders] = -> s_id { @client.get "/player/#{id}/ladders/#{s_id}" }
-      resp[:replay] = -> s_id { @client.get "/player/#{id}/replays/#{s_id}"}
+    # @param [int] player_id The player ID
+    # @return [Object] Returns information about the player, as well as two
+    # procs to get the ladders or replays for a given season
+    def player_info(player_id)
+      resp = @client.get "/player/#{player_id}"
+
+      resp[:ladders] = lambda do |season_id|
+        @client.get "/player/#{player_id}/ladders/#{season_id}"
+      end
+
+      resp[:replay] = lambda do |season_id|
+        @client.get "/player/#{player_id}/replays/#{season_id}"
+      end
+
       resp
     end
 

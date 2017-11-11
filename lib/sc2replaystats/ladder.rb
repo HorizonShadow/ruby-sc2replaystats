@@ -4,8 +4,10 @@ module Sc2replaystats
       @client = client
     end
 
-    def all(id, server)
-      @client.get "/ladder/#{id}/#{server}"
+    ##
+    # Returns all ladders for a given season id and server
+    def all(season_id, server)
+      @client.get "/ladder/#{season_id}/#{server}"
     end
 
     def servers

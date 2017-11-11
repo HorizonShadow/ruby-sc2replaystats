@@ -17,7 +17,7 @@ module Sc2replaystats
     end
 
     def upload(file)
-      @client.post '/replay/upload', file, upload_method: :ext
+      @client.post('/replay', file)['replay_queue_id']
     end
   end
 end

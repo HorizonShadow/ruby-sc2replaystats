@@ -1,0 +1,14 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+sc2replaystats-0.1.0.gem
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/sc2replaystats.iml
+.idea/.rakeTasks

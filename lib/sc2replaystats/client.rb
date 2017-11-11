@@ -4,8 +4,9 @@ require 'json'
 module Sc2replaystats
   class Client
     URL = 'http://api.sc2replaystats.com'
-    def initialize(auth)
+    def initialize(auth, hashkey)
       @auth = auth
+      @hashkey = hashkey
     end
 
     def get(path, args=nil)
@@ -17,9 +18,12 @@ module Sc2replaystats
     end
 
     def post(path, payload, args=nil)
-      JSON.parse RestClient.post(URL + path, payload,{
-          Authorization: @auth,
-          params: args
+      JSON.parse RestClient.post(URL + path, {
+          replay_file: payload,
+          upload_method: :something_else,
+          hashkey: @hashkey,
+      },{
+        Authorization: @auth
       }).body
     end
   end
