@@ -1,9 +1,9 @@
-require_relative "sc2replaystats/version"
-require_relative "sc2replaystats/account"
-require_relative "sc2replaystats/player"
-require_relative "sc2replaystats/replay"
-require_relative "sc2replaystats/client"
-require_relative "sc2replaystats/ladder"
+require "sc2replaystats/version"
+require "sc2replaystats/account"
+require "sc2replaystats/player"
+require "sc2replaystats/replay"
+require "sc2replaystats/client"
+require "sc2replaystats/ladder"
 
 module Sc2replaystats
 
