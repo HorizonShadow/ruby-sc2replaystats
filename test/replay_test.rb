@@ -19,6 +19,7 @@ class ReplayTest < MiniTest::Spec
   end
 
   def test_that_it_checks_upload_status
-    p @replay.upload_status(7355323)
+    resp = @replay.upload(File.open('test/test.SC2Replay'))
+    @replay.upload_status(resp['replay_queue_id'])
   end
 end

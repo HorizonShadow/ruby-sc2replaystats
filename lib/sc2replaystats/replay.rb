@@ -13,11 +13,11 @@ module Sc2replaystats
     end
 
     def upload_status(id)
-      @client.get "/replay/upload_status/#{id}"
+      @client.get "/replay/status/#{id}"
     end
 
     def upload(file)
-      @client.post('/replay', file)['replay_queue_id']
+      @client.post('/replay', file)
     end
   end
 end
