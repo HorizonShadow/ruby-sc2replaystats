@@ -8,8 +8,9 @@ module Sc2replaystats
       @client.get '/replay'
     end
 
-    def replay_info(id)
-      @client.get "/replay/#{id}"
+    def replay_info(id, *parms)
+      parms.map! { |p| "\"#{p}\"" }
+      @client.get "/replay/#{id}?include=[#{parms.join(',')}]"
     end
 
     def upload_status(id)

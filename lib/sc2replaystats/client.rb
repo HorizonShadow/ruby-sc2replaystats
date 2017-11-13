@@ -10,7 +10,6 @@ module Sc2replaystats
     end
 
     def get(path, args=nil)
-      p URL+path
       JSON.parse RestClient.get(URL + path, {
           Authorization: @auth,
           params: args
